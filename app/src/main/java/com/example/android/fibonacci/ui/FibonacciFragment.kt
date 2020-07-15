@@ -10,10 +10,6 @@ import com.example.android.fibonacci.R
 
 class FibonacciFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FibonacciFragment()
-    }
-
     private lateinit var viewModel: FibonacciViewModel
 
     override fun onCreateView(
