@@ -27,7 +27,7 @@ class FibonacciFragment : Fragment() {
         // TODO: Use the ViewModel
         // Check to see results are showing as expected
         for (i in 0 until 1000){
-            Timber.i("$i: ${viewModel.result[i]}")
+            Timber.i("$i: ${viewModel.fibonacciResult[i]}")
         }
 
         //TODO: Create Adapter that handles RecyclerView

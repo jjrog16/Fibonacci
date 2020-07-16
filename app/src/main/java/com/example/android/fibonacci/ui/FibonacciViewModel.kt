@@ -35,7 +35,6 @@ class FibonacciViewModel : ViewModel() {
     fun produceFibonacciSequence(){
         for (i in 0 until maxSizeOfInput){
             fibonacciResult[i] = fibonacciSequence(i.toBigInteger(), memo)
-            //Timber.i("${fibonacciSequence(i.toBigInteger(), memo)}")
         }
     }
 
