@@ -18,8 +18,7 @@ class FibonacciViewModel : ViewModel() {
     private val memo= Array(memoSize){0.toBigInteger()}
 
     // Result of Fibonacci sequence that will be shown to the user
-    val result = Array(maxSizeOfInput){0.toBigInteger()}
-
+    val fibonacciResult = Array(maxSizeOfInput){0.toBigInteger()}
 
     // Calculate Fibonacci sequence
     private fun fibonacciSequence(number: BigInteger, memo: Array<BigInteger>) : BigInteger{
@@ -35,7 +34,7 @@ class FibonacciViewModel : ViewModel() {
     // Create the list of the Fibonacci sequence
     fun produceFibonacciSequence(){
         for (i in 0 until maxSizeOfInput){
-            result[i] = fibonacciSequence(i.toBigInteger(), memo)
+            fibonacciResult[i] = fibonacciSequence(i.toBigInteger(), memo)
             //Timber.i("${fibonacciSequence(i.toBigInteger(), memo)}")
         }
     }
