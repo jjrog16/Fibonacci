@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.fibonacci.R
+import timber.log.Timber
 
 class FibonacciFragment : Fragment() {
 
@@ -24,6 +25,13 @@ class FibonacciFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(FibonacciViewModel::class.java)
         // TODO: Use the ViewModel
+        // Check to see results are showing as expected
+        for (i in 0 until 1000){
+            Timber.i("$i: ${viewModel.result[i]}")
+        }
+
+        //TODO: Create Adapter that handles RecyclerView
+
     }
 
 }
