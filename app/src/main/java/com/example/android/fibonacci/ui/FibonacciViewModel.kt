@@ -27,12 +27,13 @@ class FibonacciViewModel : ViewModel() {
             number == 1.toBigInteger() -> return 1.toBigInteger()
             memo[number.toInt()] > 0.toBigInteger() -> return memo[number.toInt()]
         }
-        memo[number.toInt()] = (fibonacciSequence(number-1.toBigInteger(), memo) + fibonacciSequence(number-2.toBigInteger(),memo))
+        memo[number.toInt()] = (fibonacciSequence(number-1.toBigInteger(), memo)
+                + fibonacciSequence(number-2.toBigInteger(),memo))
         return memo[number.toInt()]
     }
 
     // Create the list of the Fibonacci sequence
-    fun produceFibonacciSequence(){
+    private fun produceFibonacciSequence(){
         for (i in 0 until maxSizeOfInput){
             fibonacciResult[i] = fibonacciSequence(i.toBigInteger(), memo)
         }
