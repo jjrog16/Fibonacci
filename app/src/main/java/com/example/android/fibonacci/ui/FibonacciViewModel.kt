@@ -1,8 +1,9 @@
 package com.example.android.fibonacci.ui
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import timber.log.Timber
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.launch
 import java.math.BigInteger
 
 class FibonacciViewModel : ViewModel() {
@@ -21,7 +22,7 @@ class FibonacciViewModel : ViewModel() {
     val fibonacciResult = Array(maxSizeOfInput){0.toBigInteger()}
 
     // Calculate Fibonacci sequence
-    private fun fibonacciSequence(number: BigInteger, memo: Array<BigInteger>) : BigInteger{
+    private suspend fun fibonacciSequence(number: BigInteger, memo: Array<BigInteger>) : BigInteger{
         when {
             number <= 0.toBigInteger() -> return 0.toBigInteger()
             number == 1.toBigInteger() -> return 1.toBigInteger()
@@ -33,14 +34,17 @@ class FibonacciViewModel : ViewModel() {
     }
 
     // Create the list of the Fibonacci sequence
-    private fun produceFibonacciSequence(){
+    private suspend fun produceFibonacciSequence(){
         for (i in 0 until maxSizeOfInput){
             fibonacciResult[i] = fibonacciSequence(i.toBigInteger(), memo)
         }
     }
 
     init {
-        produceFibonacciSequence()
+        // Place large calculations in the background default thread
+        CoroutineScope(Default).launch {
+            produceFibonacciSequence()
+        }
     }
 
 }
